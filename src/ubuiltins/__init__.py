@@ -513,8 +513,7 @@ class int:
 
         Arguments:
             length: How many bytes to use.
-            byteorder: Choose ``"little"`` for little-endian encoding
-                       or ``"big"`` for big-endian encoding.
+            byteorder: Choose ``"little"`` for little-endian encoding or ``"big"`` for big-endian encoding.
 
         Returns:
             The integer represented by a sequence of bytes.
@@ -695,11 +694,7 @@ def print(*args):
     Keyword Arguments:
         sep: This is printed between objects, if there is more than one.
         end: This is printed after the last object.
-        file: By default, the result is printed in the terminal window. This
-              argument lets you print it to a file instead. This argument is
-              not supported on the BOOST Move hub.
-
-
+        file: By default, the result is printed in the terminal window. This argument lets you print it to a file instead. This argument is not supported on the BOOST Move hub.
     """
 
 
