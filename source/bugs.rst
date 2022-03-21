@@ -24,3 +24,14 @@ Additionally the above seems to be a variant of `Bug 8693`_.
 The default file is rendered as ``'sys.stdin'``.
 
 .. _Bug 8693: https://github.com/sphinx-doc/sphinx/issues/8693
+
+3. Overridden, overloaded class docstring return type rendered as ``None``
+--------------------------------------------------------------------------
+
+This shows ``--> None`` in the class signature, but it shouldn't.
+
+.. autoclass:: bugs.MyComplex
+
+This is the correct behavior.
+
+.. autoclass:: bugs.MyBool
