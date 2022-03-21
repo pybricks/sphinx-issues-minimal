@@ -11,10 +11,11 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
 
+TOP_DIR = os.path.abspath('..')
+sys.path.insert(0, os.path.join(TOP_DIR, 'src'))
 
 # -- Project information -----------------------------------------------------
 
@@ -29,6 +30,8 @@ author = 'Laurens Valk'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
