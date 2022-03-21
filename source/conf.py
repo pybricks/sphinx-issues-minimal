@@ -44,6 +44,17 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 
+# -- Autodoc options ------------------------------------------------------
+
+autodoc_member_order = 'bysource'
+autodoc_default_options = {
+    'members': True,
+    'undoc-members': True,
+}
+autoclass_content = 'both'  # This ensures init arguments are not ignored
+add_module_names = False  # Hide module name
+
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
