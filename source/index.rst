@@ -12,6 +12,7 @@ Welcome to Docstringtest's documentation!
 
    umath
    builtins
+   bugs
 
 
 Indices and tables
