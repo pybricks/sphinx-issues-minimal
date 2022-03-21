@@ -10,6 +10,8 @@ Welcome to Docstringtest's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   umath
+   builtins
 
 
 Indices and tables
