@@ -5,9 +5,11 @@ The following functions and exceptions can be used without importing anything.
 from typing import (
     overload,
     Any,
+    Literal,
     Union,
     SupportsComplex,
     SupportsFloat,
+    SupportsInt,
 )
 
 import io
@@ -24,12 +26,12 @@ def print_overloaded(*objects, sep: str = " ", end: str = "\n", file: io.FileIO 
     ...
 
 
-def print_overloaded(*args):
+def print_overloaded(*objects):
     """
     Prints text or other objects in the terminal window.
 
     Arguments:
-        args: One or more objects to print.
+        objects: One or more objects to print.
 
     Keyword Arguments:
         sep: This is printed between objects, if there is more than one.
@@ -84,7 +86,7 @@ class MyComplex:
         ...
 
     def __init__(self, *args) -> None:
-        """MyComplex()
+        """MyComplex(​)
         MyComplex(string: str)
         MyComplex(a: Union[float, complex], b: Union[float, complex] = 0)
 
@@ -101,4 +103,66 @@ class MyComplex:
 
         Returns:
             Complex number, obtained from the string or as the result of ``a + b * j``.
+        """
+
+
+class MyInt:
+    @overload
+    def __init__(self) -> None:
+        ...
+
+    @overload
+    def __init__(self, x: str) -> None:
+        ...
+
+    @overload
+    def __init__(self, x: str, base: int) -> None:
+        ...
+
+    @overload
+    def __init__(self, x: Union[int, SupportsInt]) -> None:
+        ...
+
+    def __init__(self, *args) -> None:
+        """int()
+        int(x: Union[int, float, str])
+
+        Converts the argument to an integer. If no argument is given, this
+        returns ``0``.
+
+        Arguments:
+            x: Number or string that will be converted.
+
+        Returns:
+            The input argument ``x`` converted to an integer.
+        """
+
+    def to_bytes(self, length: int, byteorder: Literal["little", "big"]) -> bytes:
+        """
+        Gets a :class:`bytes` object representing the integer.
+
+        Arguments:
+            length: How many bytes to use.
+            byteorder: Choose ``"little"`` for little-endian encoding
+                       or ``"big"`` for big-endian encoding.
+
+        Returns:
+            The integer represented by a sequence of bytes.
+        """
+
+    @classmethod
+    def from_bytes(cls, bytes, byteorder) -> int:
+        """
+        Gets the integer represented by the given bytes.
+
+        Arguments:
+            bytes (bytes or bytearray): The bytes to convert.
+            byteorder (str): Determines the byte order used to represent the
+                integer. If byteorder is ``"big"``, the most significant byte is at
+                the beginning of the byte sequence. If byteorder is ``"little"``,
+                the most significant byte is at the end of the byte sequence.
+
+        Returns:
+            The integer represented by the bytes.
+
         """

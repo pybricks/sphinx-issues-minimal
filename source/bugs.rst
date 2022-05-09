@@ -3,8 +3,8 @@
 
 .. module:: bugs
 
-1. Default string values in overloaded functions
-------------------------------------------------
+1. Default string values in overloaded functions (FIXED)
+--------------------------------------------------------
 
 Below, autodoc formats ``sep`` and ``end`` as::
 
@@ -16,8 +16,8 @@ But it should be::
 
 .. autofunction:: bugs.print_overloaded
 
-2. Default values rendered as string literal
---------------------------------------------
+2. Default values rendered as string literal (FIXED)
+----------------------------------------------------
 
 Additionally the above seems to be a variant of `Bug 8693`_.
 
@@ -25,8 +25,8 @@ The default file is rendered as ``'sys.stdin'``.
 
 .. _Bug 8693: https://github.com/sphinx-doc/sphinx/issues/8693
 
-3. Overridden, overloaded class docstring return type rendered as ``None``
---------------------------------------------------------------------------
+3. Overridden, overloaded class docstring return type rendered as ``None`` (FIXED)
+----------------------------------------------------------------------------------
 
 This shows ``--> None`` in the class signature, but it shouldn't.
 
@@ -35,3 +35,15 @@ This shows ``--> None`` in the class signature, but it shouldn't.
 This is the correct behavior.
 
 .. autoclass:: bugs.MyBool
+
+4. Overridden signature is ignored
+------------------------------------------
+
+A custom signature is provided, but it isn't used to make the docstrings.
+
+.. autoclass:: bugs.MyInt
+    :no-members:
+
+    .. automethod:: to_bytes
+
+    .. automethod:: from_bytes
