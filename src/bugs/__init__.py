@@ -10,6 +10,9 @@ from typing import (
     SupportsComplex,
     SupportsFloat,
     SupportsInt,
+    Tuple,
+    Union,
+    Optional,
 )
 
 import io
@@ -123,18 +126,15 @@ class MyInt:
     def __init__(self, x: Union[int, SupportsInt]) -> None:
         ...
 
-    def __init__(self, *args) -> None:
-        """int()
-        int(x: Union[int, float, str])
+    def __init__(self, *args):
+        """MyInt(x)
+        MyInt(y)
 
-        Converts the argument to an integer. If no argument is given, this
-        returns ``0``.
+        A class that does a thing.
 
         Arguments:
-            x: Number or string that will be converted.
-
-        Returns:
-            The input argument ``x`` converted to an integer.
+            x (int): A number.
+            x (float): Something else.
         """
 
     def to_bytes(self, length: int, byteorder: Literal["little", "big"]) -> bytes:
@@ -165,4 +165,52 @@ class MyInt:
         Returns:
             The integer represented by the bytes.
 
+        """
+
+
+class MyClass:
+    @overload
+    def __init__(self) -> None:
+        ...
+
+    @overload
+    def __init__(self, x: str) -> None:
+        ...
+
+    @overload
+    def __init__(self, x: str, base: int) -> None:
+        ...
+
+    @overload
+    def __init__(self, x: Union[int, SupportsInt]) -> None:
+        ...
+
+    def __init__(self, *args):
+        """MyClass(x)
+        MyClass(x, y)
+
+        SUCCESS: Overridden init signatures are used correctly.
+
+        Arguments:
+            x (int): A number.
+            x (float): Something else.
+        """
+
+    @overload
+    def my_method(self, x: Optional[int] = None) -> None:
+        ...
+
+    @overload
+    def my_method(self) -> Tuple[int, int, int]:
+        ...
+
+    def my_method(self, *args):
+        """my_method(x=None)
+        my_method() -> Tuple
+
+        PROBLEM: Overridden method signatures are NOT used.
+
+        Arguments:
+            x (int): A number.
+            x (float): Something else.
         """

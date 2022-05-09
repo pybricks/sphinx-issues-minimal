@@ -39,7 +39,13 @@ This is the correct behavior.
 4. Overridden signature is ignored
 ------------------------------------------
 
-A custom signature is provided, but it isn't used to make the docstrings.
+If a custom signature is provided for methods, it isn't used to make the docstrings.
+
+.. autoclass:: bugs.MyClass
+    :no-members:
+
+    .. automethod:: my_method
+
 
 .. autoclass:: bugs.MyInt
     :no-members:

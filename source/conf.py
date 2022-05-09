@@ -54,7 +54,6 @@ autodoc_default_options = {
 autoclass_content = 'both'  # This ensures init arguments are not ignored
 add_module_names = False  # Hide module name
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
